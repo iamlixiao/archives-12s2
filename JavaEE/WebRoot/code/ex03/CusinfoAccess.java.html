@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>CusinfoAccess.java</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b>package</b><span style='color:#808000;'> cusinfo;</span>
+<b>import</b><span style='color:#808000;'> java.sql.ResultSet;</span>
+<b>import</b><span style='color:#808000;'> java.sql.Statement;</span>
+<b>import</b><span style='color:#808000;'> java.sql.Connection;</span>
+<b>import</b><span style='color:#808000;'> java.sql.DriverManager;</span>
+
+<b>public</b> <b>class</b> CusinfoAccess {
+	<b><span style='color:#0095ff;'>ResultSet</span></b> allData;
+
+	<b>public</b> <b><span style='color:#0095ff;'>ResultSet</span></b> <span style='color:#644a9b;'>getAllData</span>() {
+		<b><span style='color:#0095ff;'>Statement</span></b> stat = <b>null</b>;
+		<b><span style='color:#0095ff;'>Connection</span></b> con = <b>null</b>;
+		<b><span style='color:#0095ff;'>ResultSet</span></b> rs = <b>null</b>;
+		<b>try</b> {
+			<b><span style='color:#0095ff;'>Class</span></b>.<span style='color:#644a9b;'>forName</span>(<span style='color:#bf0303;'>&quot;org.gjt.mm.mysql.Driver&quot;</span>);
+			con = <b><span style='color:#0095ff;'>DriverManager</span></b>.<span style='color:#644a9b;'>getConnection</span>(
+					<span style='color:#bf0303;'>&quot;jdbc:mysql://10.12.8.28/je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;278156&quot;</span>);
+			<b><span style='color:#0095ff;'>String</span></b> sql = <span style='color:#bf0303;'>&quot;select * from cusinfo&quot;</span>;
+			stat = con.<span style='color:#644a9b;'>createStatement</span>();
+			rs = stat.<span style='color:#644a9b;'>executeQuery</span>(sql);
+			allData=rs;
+		} <b>catch</b> (<b><span style='color:#0095ff;'>Exception</span></b> e) {
+			e.<span style='color:#644a9b;'>printStackTrace</span>();
+			allData=<b>null</b>;
+		}
+		<b>return</b> allData;
+	}
+
+	<b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>setAllData</span>(<b><span style='color:#0095ff;'>ResultSet</span></b> allData) {
+		<b>this</b>.<span style='color:#644a9b;'>allData</span> = allData;
+	}
+	<b>public</b> <b><span style='color:#0095ff;'>ResultSet</span></b> <span style='color:#644a9b;'>getData</span>(<b><span style='color:#0095ff;'>String</span></b> id){
+		<b><span style='color:#0095ff;'>Statement</span></b> stat = <b>null</b>;
+		<b><span style='color:#0095ff;'>Connection</span></b> con = <b>null</b>;
+		<b><span style='color:#0095ff;'>ResultSet</span></b> rs = <b>null</b>;
+		<b>try</b> {
+			<b><span style='color:#0095ff;'>Class</span></b>.<span style='color:#644a9b;'>forName</span>(<span style='color:#bf0303;'>&quot;org.gjt.mm.mysql.Driver&quot;</span>);
+			con = <b><span style='color:#0095ff;'>DriverManager</span></b>.<span style='color:#644a9b;'>getConnection</span>(
+					<span style='color:#bf0303;'>&quot;jdbc:mysql://10.12.8.28/je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;278156&quot;</span>);
+			<b><span style='color:#0095ff;'>String</span></b> sql = <span style='color:#bf0303;'>&quot;select * from cusinfo where cid='&quot;</span>+id+<span style='color:#924c9d;'>'\''</span>;
+			stat = con.<span style='color:#644a9b;'>createStatement</span>();
+			rs = stat.<span style='color:#644a9b;'>executeQuery</span>(sql);
+		} <b>catch</b> (<b><span style='color:#0095ff;'>Exception</span></b> e) {
+			e.<span style='color:#644a9b;'>printStackTrace</span>();
+			rs=<b>null</b>;
+		}
+		<b>return</b> rs;
+	}
+	<b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>setData</span>(<b><span style='color:#0095ff;'>String</span></b> id,<b><span style='color:#0095ff;'>String</span></b> item,<b><span style='color:#0095ff;'>String</span></b> value){
+		<b><span style='color:#0095ff;'>Statement</span></b> stat = <b>null</b>;
+		<b><span style='color:#0095ff;'>Connection</span></b> con = <b>null</b>;
+		<b>try</b> {
+			<b><span style='color:#0095ff;'>Class</span></b>.<span style='color:#644a9b;'>forName</span>(<span style='color:#bf0303;'>&quot;org.gjt.mm.mysql.Driver&quot;</span>);
+			con = <b><span style='color:#0095ff;'>DriverManager</span></b>.<span style='color:#644a9b;'>getConnection</span>(
+					<span style='color:#bf0303;'>&quot;jdbc:mysql://10.12.8.28/je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;278156&quot;</span>);
+			<b><span style='color:#0095ff;'>String</span></b> sql = <span style='color:#bf0303;'>&quot;update cusinfo set &quot;</span>+item+<span style='color:#bf0303;'>&quot;='&quot;</span>+value+<span style='color:#bf0303;'>&quot;' where cid='&quot;</span>+id+<span style='color:#924c9d;'>'\''</span>;
+			stat = con.<span style='color:#644a9b;'>createStatement</span>();
+			stat.<span style='color:#644a9b;'>executeUpdate</span>(sql);
+		} <b>catch</b> (<b><span style='color:#0095ff;'>Exception</span></b> e) {
+			e.<span style='color:#644a9b;'>printStackTrace</span>();
+		}
+	}
+	<b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>removeRecord</span>(<b><span style='color:#0095ff;'>String</span></b> id){
+		<b><span style='color:#0095ff;'>Statement</span></b> stat = <b>null</b>;
+		<b><span style='color:#0095ff;'>Connection</span></b> con = <b>null</b>;
+		<b>try</b> {
+			<b><span style='color:#0095ff;'>Class</span></b>.<span style='color:#644a9b;'>forName</span>(<span style='color:#bf0303;'>&quot;org.gjt.mm.mysql.Driver&quot;</span>);
+			con = <b><span style='color:#0095ff;'>DriverManager</span></b>.<span style='color:#644a9b;'>getConnection</span>(
+					<span style='color:#bf0303;'>&quot;jdbc:mysql://10.12.8.28/je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;278156&quot;</span>);
+			<b><span style='color:#0095ff;'>String</span></b> sql = <span style='color:#bf0303;'>&quot;delete from cusinfo where cid='&quot;</span>+id+<span style='color:#924c9d;'>'\''</span>;
+			stat = con.<span style='color:#644a9b;'>createStatement</span>();
+			stat.<span style='color:#644a9b;'>executeUpdate</span>(sql);
+		} <b>catch</b> (<b><span style='color:#0095ff;'>Exception</span></b> e) {
+			e.<span style='color:#644a9b;'>printStackTrace</span>();
+		}
+	}
+	<b>public</b> <b><span style='color:#0095ff;'>String</span></b> <span style='color:#644a9b;'>getMaxId</span>(){
+		<b><span style='color:#0095ff;'>Statement</span></b> stat = <b>null</b>;
+		<b><span style='color:#0095ff;'>Connection</span></b> con = <b>null</b>;
+		<b><span style='color:#0095ff;'>ResultSet</span></b> rs = <b>null</b>;
+		<b><span style='color:#0095ff;'>String</span></b> c=<b>null</b>;
+		<b>try</b> {
+			<b><span style='color:#0095ff;'>Class</span></b>.<span style='color:#644a9b;'>forName</span>(<span style='color:#bf0303;'>&quot;org.gjt.mm.mysql.Driver&quot;</span>);
+			con = <b><span style='color:#0095ff;'>DriverManager</span></b>.<span style='color:#644a9b;'>getConnection</span>(
+					<span style='color:#bf0303;'>&quot;jdbc:mysql://10.12.8.28/je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;278156&quot;</span>);
+			<b><span style='color:#0095ff;'>String</span></b> sql = <span style='color:#bf0303;'>&quot;select max(cid+0) as newid from cusinfo&quot;</span>;
+			stat = con.<span style='color:#644a9b;'>createStatement</span>();
+			rs=stat.<span style='color:#644a9b;'>executeQuery</span>(sql);
+			rs.<span style='color:#644a9b;'>next</span>();
+			c=<b><span style='color:#0095ff;'>String</span></b>.<span style='color:#644a9b;'>valueOf</span>(rs.<span style='color:#644a9b;'>getInt</span>(<span style='color:#bf0303;'>&quot;newid&quot;</span>)+<span style='color:#b08000;'>1</span>);
+		} <b>catch</b> (<b><span style='color:#0095ff;'>Exception</span></b> e) {
+			e.<span style='color:#644a9b;'>printStackTrace</span>();
+		}
+		<b>return</b> c;
+	}
+	<b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>addRecord</span>(<b><span style='color:#0095ff;'>String</span></b> cid,<b><span style='color:#0095ff;'>String</span></b> cname,<b><span style='color:#0095ff;'>String</span></b> phone,<b><span style='color:#0095ff;'>String</span></b> mobile,<b><span style='color:#0095ff;'>String</span></b> address){
+		<b><span style='color:#0095ff;'>Statement</span></b> stat = <b>null</b>;
+		<b><span style='color:#0095ff;'>Connection</span></b> con = <b>null</b>;
+		<b>try</b> {
+			<b><span style='color:#0095ff;'>Class</span></b>.<span style='color:#644a9b;'>forName</span>(<span style='color:#bf0303;'>&quot;org.gjt.mm.mysql.Driver&quot;</span>);
+			con = <b><span style='color:#0095ff;'>DriverManager</span></b>.<span style='color:#644a9b;'>getConnection</span>(
+					<span style='color:#bf0303;'>&quot;jdbc:mysql://10.12.8.28/je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;je1024007&quot;</span>, <span style='color:#bf0303;'>&quot;278156&quot;</span>);
+			<b><span style='color:#0095ff;'>String</span></b> sql = <span style='color:#bf0303;'>&quot;insert into cusinfo values('&quot;</span>+cid+<span style='color:#bf0303;'>&quot;','&quot;</span>+cname+<span style='color:#bf0303;'>&quot;','&quot;</span>+phone+<span style='color:#bf0303;'>&quot;','&quot;</span>+mobile+<span style='color:#bf0303;'>&quot;','&quot;</span>+address+<span style='color:#bf0303;'>&quot;')&quot;</span>;
+			stat = con.<span style='color:#644a9b;'>createStatement</span>();
+			stat.<span style='color:#644a9b;'>executeUpdate</span>(sql);
+		} <b>catch</b> (<b><span style='color:#0095ff;'>Exception</span></b> e) {
+			e.<span style='color:#644a9b;'>printStackTrace</span>();
+		}
+	
+	}
+}</pre>
+</body>
+</html>

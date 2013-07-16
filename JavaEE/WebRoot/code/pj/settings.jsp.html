@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>settings.jsp</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b><i><span style='color:#0000ff;'>&lt;%@ page</span></i></b><span style='color:#006e28;'> language</span>=<span style='color:#bf0303;'>&quot;java&quot;</span><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.util.*&quot;</span><span style='color:#006e28;'> pageEncoding</span>=<span style='color:#bf0303;'>&quot;GBK&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@page</span></i></b><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.sql.*&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><span style='color:#000000;'>&lt;%</span></b>
+	<b><span style='color:#0095ff;'>String</span></b> path = request.getContextPath();
+	<b><span style='color:#0095ff;'>String</span></b> basePath = request.getScheme() + <span style='color:#bf0303;'>&quot;://&quot;</span>
+			+ request.getServerName() + <span style='color:#bf0303;'>&quot;:&quot;</span> + request.getServerPort()
+			+ path + <span style='color:#bf0303;'>&quot;/&quot;</span>;
+<b><span style='color:#000000;'>%&gt;</span></b>
+
+&lt;<span style='color:#006e28;'>!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span>&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;base<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>basePath<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span>&gt;
+
+		&lt;title&gt;账户资料&lt;/title&gt;
+
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;pragma&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;no-cache&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;cache-control&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;no-cache&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;expires&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;0&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;keywords&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;keyword1,keyword2,keyword3&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;description&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;This is my page&quot;</span>&gt;
+		&lt;link<span style='color:#006e28;'> rel</span>=<span style='color:#0057ae;'>&quot;stylesheet&quot;</span><span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;text/css&quot;</span><span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;pj/x.css&quot;</span>&gt;
+
+	&lt;/head&gt;
+
+	&lt;body&gt;
+		<b><i><span style='color:#0000ff;'>&lt;jsp:include</span></i></b><span style='color:#006e28;'> page</span>=<span style='color:#bf0303;'>&quot;topbar.jsp&quot;</span><b><i><span style='color:#0000ff;'>&gt;&lt;/jsp:include&gt;</span></i></b>
+		<b><i><span style='color:#0000ff;'>&lt;jsp:useBean</span></i></b><span style='color:#006e28;'> id</span>=<span style='color:#bf0303;'>&quot;acc&quot;</span><span style='color:#006e28;'> class</span>=<span style='color:#bf0303;'>&quot;pj.Account&quot;</span><span style='color:#006e28;'> scope</span>=<span style='color:#bf0303;'>&quot;session&quot;</span><b><i><span style='color:#0000ff;'>&gt;&lt;/jsp:useBean&gt;</span></i></b>
+		&lt;div<span style='color:#006e28;'> class</span>=<span style='color:#0057ae;'>&quot;mid&quot;</span>
+<span style='color:#006e28;'>			style</span>=<span style='color:#0057ae;'>&quot;display: table; width: 65%; margin: 100px auto 0 auto; background-image: -moz-linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3) ); border-radius: 7px; padding: 10px; border: 1px solid white&quot;</span>&gt;
+			&lt;div<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;display: table-row&quot;</span>&gt;
+				&lt;div<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;display: table-cell&quot;</span>&gt;
+					<b><span style='color:#000000;'>&lt;%</span></b>
+						<b><span style='color:#0095ff;'>ResultSet</span></b> r = acc.getSettings((<b><span style='color:#0095ff;'>Integer</span></b>) request.getSession()
+								.getAttribute(<span style='color:#bf0303;'>&quot;logged&quot;</span>));
+						r.next();
+					<b><span style='color:#000000;'>%&gt;</span></b>
+					&lt;div&gt;
+						修改资料
+					&lt;/div&gt;
+					&lt;form<span style='color:#006e28;'> action</span>=<span style='color:#0057ae;'>&quot;pj/modData.jsp&quot;</span><span style='color:#006e28;'> method</span>=<span style='color:#0057ae;'>&quot;post&quot;</span>&gt;
+						&lt;div&gt;
+							昵称
+						&lt;/div&gt;
+						&lt;input<span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;nick&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>r.getString(<span style='color:#bf0303;'>&quot;anick&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span><span style='color:#006e28;'> </span>/&gt;
+						&lt;div&gt;
+							邮箱
+						&lt;/div&gt;
+						&lt;input<span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;email&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>r.getString(<span style='color:#bf0303;'>&quot;email&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span><span style='color:#006e28;'> </span>/&gt;
+						&lt;div&gt;
+							生日
+						&lt;/div&gt;
+						&lt;input<span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;birthday&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>r.getDate(<span style='color:#bf0303;'>&quot;birthday&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span><span style='color:#006e28;'> </span>/&gt;
+						&lt;div&gt;
+							简介
+						&lt;/div&gt;
+						&lt;input<span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;comment&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>r.getString(<span style='color:#bf0303;'>&quot;comment&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span><span style='color:#006e28;'> </span>/&gt;
+						&lt;div&gt;
+							自定义标题
+						&lt;/div&gt;
+						&lt;input<span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;s2&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>r.getString(<span style='color:#bf0303;'>&quot;s2&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span><span style='color:#006e28;'> </span>/&gt;
+						&lt;div&gt;
+							&lt;input<span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;submit&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;提交&quot;</span><span style='color:#006e28;'> </span>/&gt;
+						&lt;/div&gt;
+					&lt;/form&gt;
+				&lt;/div&gt;
+				&lt;script<span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;text/javascript&quot;</span>&gt;
+function pwdvalidate(){
+	var q=document.getElementById(&quot;q&quot;),p0;
+	if(q.value==document.getElementById(&quot;p&quot;).value&amp;&amp;q.value.length&gt;0){
+		q.style.backgroundColor=&quot;green&quot;;
+		document.getElementById(&quot;zci&quot;).disabled=false;
+	}
+	else{
+		q.style.backgroundColor=&quot;red&quot;;
+		document.getElementById(&quot;zci&quot;).disabled=true;
+	}
+}
+		&lt;/script&gt;
+				&lt;div<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;display: table-cell&quot;</span>&gt;
+					&lt;div&gt;
+						修改密码
+					&lt;/div&gt;
+					&lt;form<span style='color:#006e28;'> action</span>=<span style='color:#0057ae;'>&quot;pj/modPwd.jsp&quot;</span><span style='color:#006e28;'> method</span>=<span style='color:#0057ae;'>&quot;post&quot;</span>&gt;
+						&lt;div&gt;
+							旧密码
+						&lt;/div&gt;
+						&lt;input<span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;opw&quot;</span><span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;password&quot;</span><span style='color:#006e28;'> id</span>=<span style='color:#0057ae;'>&quot;n&quot;</span>/&gt;
+						&lt;div&gt;
+							新密码
+						&lt;/div&gt;
+						&lt;input<span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;pwd&quot;</span><span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;password&quot;</span><span style='color:#006e28;'> id</span>=<span style='color:#0057ae;'>&quot;p&quot;</span><span style='color:#006e28;'> onkeyup</span>=<span style='color:#0057ae;'>&quot;pwdvalidate()&quot;</span>/&gt;
+						&lt;div&gt;
+							确认密码
+						&lt;/div&gt;
+						&lt;input<span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;pwdc&quot;</span><span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;password&quot;</span><span style='color:#006e28;'> id</span>=<span style='color:#0057ae;'>&quot;q&quot;</span><span style='color:#006e28;'> onkeyup</span>=<span style='color:#0057ae;'>&quot;pwdvalidate()&quot;</span>/&gt;
+						&lt;div&gt;
+							&lt;input<span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;submit&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;修改&quot;</span><span style='color:#006e28;'> id</span>=<span style='color:#0057ae;'>&quot;zci&quot;</span>/&gt;
+						&lt;/div&gt;
+					&lt;/form&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>

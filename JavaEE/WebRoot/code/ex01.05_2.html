@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="GBK">
+<title>计算立方</title>
+</head>
+<body>
+<pre>&lt;?xml version="1.0" encoding="GBK" ?&gt;
+&lt;%@ page language="java" contentType="text/html; charset=GBK"
+	pageEncoding="GBK"%&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=GBK" /&gt;
+&lt;title&gt;Cubic Calculator&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;%
+		int n = Integer.parseInt(request.getParameter("num")), m = n * n
+				* n;
+	%&gt;
+	&lt;%=n%&gt;的立方是：&lt;%=m%&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>

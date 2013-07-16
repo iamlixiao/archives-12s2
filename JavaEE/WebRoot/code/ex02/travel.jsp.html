@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>travel.jsp</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+&lt;<span style='color:#006e28;'>?xml version</span>=<span style='color:#0057ae;'>&quot;1.0&quot;</span><span style='color:#006e28;'> encoding</span>=<span style='color:#0057ae;'>&quot;GBK&quot;</span><span style='color:#006e28;'> ?</span>&gt;
+<b><i><span style='color:#0000ff;'>&lt;%@ page</span></i></b><span style='color:#006e28;'> language</span>=<span style='color:#bf0303;'>&quot;java&quot;</span><span style='color:#006e28;'> contentType</span>=<span style='color:#bf0303;'>&quot;text/html; charset=GBK&quot;</span>
+<span style='color:#006e28;'>	pageEncoding</span>=<span style='color:#bf0303;'>&quot;GBK&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@taglib</span></i></b><span style='color:#006e28;'> uri</span>=<span style='color:#bf0303;'>&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span style='color:#006e28;'> prefix</span>=<span style='color:#bf0303;'>&quot;c&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+&lt;<span style='color:#006e28;'>!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;</span>&gt;
+&lt;html<span style='color:#006e28;'> xmlns</span>=<span style='color:#0057ae;'>&quot;http://www.w3.org/1999/xhtml&quot;</span>&gt;
+&lt;head&gt;
+&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;Content-Type&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;text/html; charset=GBK&quot;</span><span style='color:#006e28;'> </span>/&gt;
+&lt;title&gt;旅游费用&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;h2&gt;旅游费用查询&lt;/h2&gt;
+	&lt;form<span style='color:#006e28;'> action</span>=<span style='color:#0057ae;'>&quot;travel.jsp&quot;</span><span style='color:#006e28;'> method</span>=<span style='color:#0057ae;'>&quot;post&quot;</span>&gt;
+		&lt;select<span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;dest&quot;</span>&gt;
+			&lt;option<span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>0</span>&gt;地点&lt;/option&gt;
+			&lt;option<span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>1</span>&gt;北京&lt;/option&gt;
+			&lt;option<span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>2</span>&gt;杭州&lt;/option&gt;
+			&lt;option<span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>3</span>&gt;南京&lt;/option&gt;
+			&lt;option<span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>4</span>&gt;广州&lt;/option&gt;
+			&lt;option<span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>5</span>&gt;成都&lt;/option&gt;
+			&lt;option<span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>6</span>&gt;香港&lt;/option&gt;
+		&lt;/select&gt; &lt;input<span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;submit&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;查询&quot;</span><span style='color:#006e28;'> </span>/&gt;
+	&lt;/form&gt;
+	&lt;div&gt;
+		<b>&lt;c:set</b><span style='color:#006e28;'> var</span>=<span style='color:#0057ae;'>&quot;dest&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>request.getParameter(\<span style='color:#bf0303;'>&quot;dest\&quot;)%&gt;&quot;</span> /&gt;
+		&lt;c:choose&gt;
+			&lt;c:when test=<span style='color:#bf0303;'>&quot;${dest==1 }&quot;</span>&gt;北京的费用为100&lt;/c:when&gt;
+			&lt;c:when test=<span style='color:#bf0303;'>&quot;${dest==2 }&quot;</span>&gt;杭州的费用为200&lt;/c:when&gt;
+			&lt;c:when test=<span style='color:#bf0303;'>&quot;${dest==3 }&quot;</span>&gt;南京的费用为300&lt;/c:when&gt;
+			&lt;c:when test=<span style='color:#bf0303;'>&quot;${dest==4 }&quot;</span>&gt;广州的费用为400&lt;/c:when&gt;
+			&lt;c:when test=<span style='color:#bf0303;'>&quot;${dest==5 }&quot;</span>&gt;成都的费用为500&lt;/c:when&gt;
+			&lt;c:when test=<span style='color:#bf0303;'>&quot;${dest==6 }&quot;</span>&gt;香港的费用为600&lt;/c:when&gt;
+		&lt;/c:choose&gt;元
+	&lt;/<b>div</b>&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>

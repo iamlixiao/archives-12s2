@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>CalcBean.java</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b>package</b><span style='color:#808000;'> lab02;</span>
+
+<b>public</b> <b>class</b> CalcBean {
+	<b><span style='color:#0095ff;'>String</span></b> arg1,arg2,method;
+	<b>public</b> <b><span style='color:#0095ff;'>String</span></b> <span style='color:#644a9b;'>getArg1</span>() {
+		<b>return</b> arg1;
+	}
+
+	<b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>setArg1</span>(<b><span style='color:#0095ff;'>String</span></b> arg1) {
+		<b>this</b>.<span style='color:#644a9b;'>arg1</span> = arg1;
+	}
+
+	<b>public</b> <b><span style='color:#0095ff;'>String</span></b> <span style='color:#644a9b;'>getArg2</span>() {
+		<b>return</b> arg2;
+	}
+
+	<b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>setArg2</span>(<b><span style='color:#0095ff;'>String</span></b> arg2) {
+		<b>this</b>.<span style='color:#644a9b;'>arg2</span> = arg2;
+	}
+
+	<b>public</b> <b><span style='color:#0095ff;'>String</span></b> <span style='color:#644a9b;'>getMethod</span>() {
+		<b>return</b> method;
+	}
+
+	<b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>setMethod</span>(<b><span style='color:#0095ff;'>String</span></b> method) {
+		<b>this</b>.<span style='color:#644a9b;'>method</span> = method;
+	}
+
+	<b>public</b> <span style='color:#644a9b;'>CalcBean</span>() {
+	}
+
+	<b>public</b> <b><span style='color:#0095ff;'>String</span></b> <span style='color:#644a9b;'>calc</span>() {
+		<span style='color:#0057ae;'>double</span> a=<b><span style='color:#0095ff;'>Double</span></b>.<span style='color:#644a9b;'>parseDouble</span>(arg1),b=<b><span style='color:#0095ff;'>Double</span></b>.<span style='color:#644a9b;'>parseDouble</span>(arg2);
+		<b>if</b>(method.<span style='color:#644a9b;'>equals</span>(<span style='color:#bf0303;'>&quot;+&quot;</span>))<b>return</b> <b><span style='color:#0095ff;'>String</span></b>.<span style='color:#644a9b;'>valueOf</span>(a+b);
+		<b>else</b> <b>if</b>(method.<span style='color:#644a9b;'>equals</span>(<span style='color:#bf0303;'>&quot;-&quot;</span>))<b>return</b> <b><span style='color:#0095ff;'>String</span></b>.<span style='color:#644a9b;'>valueOf</span>(a-b);
+		<b>else</b> <b>if</b>(method.<span style='color:#644a9b;'>equals</span>(<span style='color:#bf0303;'>&quot;*&quot;</span>))<b>return</b> <b><span style='color:#0095ff;'>String</span></b>.<span style='color:#644a9b;'>valueOf</span>(a*b);
+		<b>else</b> <b>return</b> <b><span style='color:#0095ff;'>String</span></b>.<span style='color:#644a9b;'>valueOf</span>(a/b);
+	}
+}
+</pre>
+</body>
+</html>

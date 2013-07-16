@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>userview.jsp</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b><i><span style='color:#0000ff;'>&lt;%@ page</span></i></b><span style='color:#006e28;'> language</span>=<span style='color:#bf0303;'>&quot;java&quot;</span><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.util.*&quot;</span><span style='color:#006e28;'> pageEncoding</span>=<span style='color:#bf0303;'>&quot;GBK&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@ taglib</span></i></b><span style='color:#006e28;'> uri</span>=<span style='color:#bf0303;'>&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span style='color:#006e28;'> prefix</span>=<span style='color:#bf0303;'>&quot;c&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@page</span></i></b><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.sql.*&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><span style='color:#000000;'>&lt;%</span></b>
+	<b><span style='color:#0095ff;'>String</span></b> path = request.getContextPath();
+	<b><span style='color:#0095ff;'>String</span></b> basePath = request.getScheme() + <span style='color:#bf0303;'>&quot;://&quot;</span>
+			+ request.getServerName() + <span style='color:#bf0303;'>&quot;:&quot;</span> + request.getServerPort()
+			+ path + <span style='color:#bf0303;'>&quot;/&quot;</span>;
+<b><span style='color:#000000;'>%&gt;</span></b>
+
+&lt;<span style='color:#006e28;'>!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span>&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;base<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>basePath<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span>&gt;
+
+		&lt;title&gt;My JSP 'userview.jsp' starting page&lt;/title&gt;
+
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;pragma&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;no-cache&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;cache-control&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;no-cache&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;expires&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;0&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;keywords&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;keyword1,keyword2,keyword3&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;description&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;This is my page&quot;</span>&gt;
+		&lt;link<span style='color:#006e28;'> rel</span>=<span style='color:#0057ae;'>&quot;stylesheet&quot;</span><span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;text/css&quot;</span><span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;pj/x.css&quot;</span>&gt;
+
+	&lt;/head&gt;
+
+	&lt;body&gt;
+		<b><i><span style='color:#0000ff;'>&lt;jsp:include</span></i></b><span style='color:#006e28;'> page</span>=<span style='color:#bf0303;'>&quot;topbar.jsp&quot;</span><b><i><span style='color:#0000ff;'>&gt;&lt;/jsp:include&gt;</span></i></b>
+		<b><i><span style='color:#0000ff;'>&lt;jsp:useBean</span></i></b><span style='color:#006e28;'> id</span>=<span style='color:#bf0303;'>&quot;acc&quot;</span><span style='color:#006e28;'> class</span>=<span style='color:#bf0303;'>&quot;pj.Account&quot;</span><span style='color:#006e28;'> scope</span>=<span style='color:#bf0303;'>&quot;session&quot;</span><b><i><span style='color:#0000ff;'>&gt;&lt;/jsp:useBean&gt;</span></i></b>
+		&lt;div<span style='color:#006e28;'> class</span>=<span style='color:#0057ae;'>&quot;mid&quot;</span><span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;margin: auto; width: 85%; height: 100%; display: table;&quot;</span>&gt;
+			&lt;div<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;display: table-row&quot;</span>&gt;
+				&lt;div<span style='color:#006e28;'> id</span>=<span style='color:#0057ae;'>&quot;left&quot;</span>&gt;
+					&lt;div<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;font-size: 32px; font-weight: bold&quot;</span>&gt;
+						好友动态
+					&lt;/div&gt;
+					<b><span style='color:#000000;'>&lt;%</span></b>
+						<b><span style='color:#0095ff;'>ResultSet</span></b> friendrs = acc.getFriendsRecords((<b><span style='color:#0095ff;'>Integer</span></b>) request
+								.getSession().getAttribute(<span style='color:#bf0303;'>&quot;logged&quot;</span>));
+						<b>if</b> (friendrs != <b>null</b>)
+							<b>while</b> (friendrs.next()) {
+					<b><span style='color:#000000;'>%&gt;</span></b>
+					&lt;div
+<span style='color:#006e28;'>						style</span>=<span style='color:#0057ae;'>&quot;text-align: left; background: white; box-shadow: 2px 2px 5px #057; margin: 1em 0 0 0&quot;</span>&gt;
+						&lt;div<span style='color:#006e28;'> class</span>=<span style='color:#0057ae;'>&quot;record-head&quot;</span>&gt;<b><span style='color:#000000;'>&lt;%=</span></b>acc.getNickById(friendrs.getInt(<span style='color:#bf0303;'>&quot;aid&quot;</span>))<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+						&lt;div<span style='color:#006e28;'> class</span>=<span style='color:#0057ae;'>&quot;record-body&quot;</span>&gt;<b><span style='color:#000000;'>&lt;%=</span></b>friendrs.getString(<span style='color:#bf0303;'>&quot;content&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+						&lt;div<span style='color:#006e28;'> class</span>=<span style='color:#0057ae;'>&quot;record-foot&quot;</span>&gt;<b><span style='color:#000000;'>&lt;%=</span></b>friendrs.getTimestamp(<span style='color:#bf0303;'>&quot;datetime&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+					&lt;/div&gt;
+					<b><span style='color:#000000;'>&lt;%</span></b>
+						}
+						<b>else</b>
+							out.print(<span style='color:#bf0303;'>&quot;没有动态&quot;</span>);
+					<b><span style='color:#000000;'>%&gt;</span></b>
+				&lt;/div&gt;
+				&lt;div<span style='color:#006e28;'> id</span>=<span style='color:#0057ae;'>&quot;right&quot;</span>&gt;
+					&lt;div<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;font-size: 28px; margin: 20px&quot;</span>&gt;
+						发布状态
+					&lt;/div&gt;
+					&lt;form<span style='color:#006e28;'> action</span>=<span style='color:#0057ae;'>&quot;pj/user.jsp&quot;</span><span style='color:#006e28;'> method</span>=<span style='color:#0057ae;'>&quot;post&quot;</span>&gt;
+					&lt;textarea<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;width: 90%; height: 400px&quot;</span><span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;rec&quot;</span>&gt;&lt;/textarea&gt;
+						&lt;input<span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;submit&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;发布&quot;</span><span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;height: 25px&quot;</span><span style='color:#006e28;'> </span>/&gt;
+					&lt;/form&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;br&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>

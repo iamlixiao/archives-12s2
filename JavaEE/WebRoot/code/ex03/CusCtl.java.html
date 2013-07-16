@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>CusCtl.java</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b>package</b><span style='color:#808000;'> cusinfo;</span>
+
+<b>import</b><span style='color:#808000;'> java.io.IOException;</span>
+<b>import</b><span style='color:#808000;'> java.io.PrintWriter;</span>
+
+<b>import</b><span style='color:#808000;'> javax.servlet.ServletException;</span>
+<b>import</b><span style='color:#808000;'> javax.servlet.http.HttpServlet;</span>
+<b>import</b><span style='color:#808000;'> javax.servlet.http.HttpServletRequest;</span>
+<b>import</b><span style='color:#808000;'> javax.servlet.http.HttpServletResponse;</span>
+<b>import</b><span style='color:#808000;'> javax.servlet.http.HttpSession;</span>
+
+<b>public</b> <b>class</b> CusCtl <b>extends</b> HttpServlet {
+
+	<b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>	 * Constructor of the object.</span></b>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*/</span></b>
+	<b>public</b> <span style='color:#644a9b;'>CusCtl</span>() {
+		<b>super</b>();
+	}
+
+	<b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>	 * Destruction of the servlet. </span></b><b>&lt;br&gt;</b>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*/</span></b>
+	<b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>destroy</span>() {
+		<b>super</b>.<span style='color:#644a9b;'>destroy</span>(); <span style='color:#898887;'>// Just puts &quot;destroy&quot; string in log</span>
+		<span style='color:#898887;'>// Put your code here</span>
+	}
+
+	<b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>	 * The doGet method of the servlet. </span></b><b>&lt;br&gt;</b>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> This method is called when a form has its tag value method equals to get.</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@param </span></b><i><span style='color:#008080;'>request</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'>            the request send by the client to the server</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@param </span></b><i><span style='color:#008080;'>response</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'>            the response send by the server to the client</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@throws </span></b><i><span style='color:#008080;'>ServletException</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'>             if an error occurred</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@throws </span></b><i><span style='color:#008080;'>IOException</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'>             if an error occurred</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*/</span></b>
+	<b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>doGet</span>(HttpServletRequest request, HttpServletResponse response)
+			<b>throws</b> ServletException, <b><span style='color:#0095ff;'>IOException</span></b> {
+		<b><span style='color:#0095ff;'>String</span></b> act = request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;act&quot;</span>);
+		<b>if</b> (act.<span style='color:#644a9b;'>equals</span>(<span style='color:#bf0303;'>&quot;del&quot;</span>)) {
+			CusinfoAccess cas = <b>new</b> <span style='color:#644a9b;'>CusinfoAccess</span>();
+			cas.<span style='color:#644a9b;'>removeRecord</span>(request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;cid&quot;</span>));
+			response.<span style='color:#644a9b;'>sendRedirect</span>(<span style='color:#bf0303;'>&quot;../cusinfo.jsp&quot;</span>);
+		} <b>else</b> <b>if</b> (act.<span style='color:#644a9b;'>equals</span>(<span style='color:#bf0303;'>&quot;mod&quot;</span>)) {
+			request.<span style='color:#644a9b;'>getSession</span>().<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;cid&quot;</span>,
+					request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;cid&quot;</span>));
+			response.<span style='color:#644a9b;'>sendRedirect</span>(<span style='color:#bf0303;'>&quot;../cusmod.jsp&quot;</span>);
+		} <b>else</b> <b>if</b> (act.<span style='color:#644a9b;'>equals</span>(<span style='color:#bf0303;'>&quot;new&quot;</span>)) {
+			CusinfoAccess cas = <b>new</b> <span style='color:#644a9b;'>CusinfoAccess</span>();
+			request.<span style='color:#644a9b;'>getSession</span>().<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;cid&quot;</span>, cas.<span style='color:#644a9b;'>getMaxId</span>());
+			request.<span style='color:#644a9b;'>getSession</span>().<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;new&quot;</span>, <span style='color:#bf0303;'>&quot;true&quot;</span>);
+			response.<span style='color:#644a9b;'>sendRedirect</span>(<span style='color:#bf0303;'>&quot;../cusnew.jsp&quot;</span>);
+		}
+		response.<span style='color:#644a9b;'>setContentType</span>(<span style='color:#bf0303;'>&quot;text/html&quot;</span>);
+		<b><span style='color:#0095ff;'>PrintWriter</span></b> out = response.<span style='color:#644a9b;'>getWriter</span>();
+		out
+				.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;&lt;!DOCTYPE HTML PUBLIC </span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'>-//W3C//DTD HTML 4.01 Transitional//EN</span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'>&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;&lt;HTML&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;  &lt;HEAD&gt;&lt;TITLE&gt;A Servlet&lt;/TITLE&gt;&lt;/HEAD&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;  &lt;BODY&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;    This is &quot;</span>);
+		out.<span style='color:#644a9b;'>print</span>(<b>this</b>.<span style='color:#644a9b;'>getClass</span>());
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;, using the GET method&quot;</span>);
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;  &lt;/BODY&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;&lt;/HTML&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>flush</span>();
+		out.<span style='color:#644a9b;'>close</span>();
+	}
+
+	<b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>	 * The doPost method of the servlet. </span></b><b>&lt;br&gt;</b>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> This method is called when a form has its tag value method equals to</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> post.</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@param </span></b><i><span style='color:#008080;'>request</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'>            the request send by the client to the server</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@param </span></b><i><span style='color:#008080;'>response</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'>            the response send by the server to the client</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@throws </span></b><i><span style='color:#008080;'>ServletException</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'>             if an error occurred</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@throws </span></b><i><span style='color:#008080;'>IOException</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'>             if an error occurred</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*/</span></b>
+	<b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>doPost</span>(HttpServletRequest request, HttpServletResponse response)
+			<b>throws</b> ServletException, <b><span style='color:#0095ff;'>IOException</span></b> {
+		request.<span style='color:#644a9b;'>setCharacterEncoding</span>(<span style='color:#bf0303;'>&quot;GBK&quot;</span>);
+		response.<span style='color:#644a9b;'>setCharacterEncoding</span>(<span style='color:#bf0303;'>&quot;GBK&quot;</span>);
+		CusinfoAccess cas = <b>new</b> <span style='color:#644a9b;'>CusinfoAccess</span>();
+		<b><span style='color:#0095ff;'>String</span></b> cid = (<b><span style='color:#0095ff;'>String</span></b>) request.<span style='color:#644a9b;'>getSession</span>().<span style='color:#644a9b;'>getAttribute</span>(<span style='color:#bf0303;'>&quot;cid&quot;</span>);
+		<b>if</b> (request.<span style='color:#644a9b;'>getSession</span>().<span style='color:#644a9b;'>getAttribute</span>(<span style='color:#bf0303;'>&quot;new&quot;</span>) == <b>null</b>) {
+			cas.<span style='color:#644a9b;'>setData</span>(cid, <span style='color:#bf0303;'>&quot;cname&quot;</span>, request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;cname&quot;</span>));
+			cas.<span style='color:#644a9b;'>setData</span>(cid, <span style='color:#bf0303;'>&quot;phone&quot;</span>, request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;phone&quot;</span>));
+			cas.<span style='color:#644a9b;'>setData</span>(cid, <span style='color:#bf0303;'>&quot;mobile&quot;</span>, request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;mobile&quot;</span>));
+			cas.<span style='color:#644a9b;'>setData</span>(cid, <span style='color:#bf0303;'>&quot;address&quot;</span>, request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;address&quot;</span>));
+			response.<span style='color:#644a9b;'>sendRedirect</span>(<span style='color:#bf0303;'>&quot;../cusinfo.jsp&quot;</span>);
+		} <b>else</b> <b>if</b> (((<b><span style='color:#0095ff;'>String</span></b>) request.<span style='color:#644a9b;'>getSession</span>().<span style='color:#644a9b;'>getAttribute</span>(<span style='color:#bf0303;'>&quot;new&quot;</span>))
+				.<span style='color:#644a9b;'>equals</span>(<span style='color:#bf0303;'>&quot;true&quot;</span>)) {
+			HttpSession s = request.<span style='color:#644a9b;'>getSession</span>();
+			s.<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;cname&quot;</span>, request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;cname&quot;</span>));
+			s.<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;phone&quot;</span>, request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;phone&quot;</span>));
+			s.<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;mobile&quot;</span>, request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;mobile&quot;</span>));
+			s.<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;address&quot;</span>, request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;address&quot;</span>));
+			response.<span style='color:#644a9b;'>sendRedirect</span>(<span style='color:#bf0303;'>&quot;../cusconfirm.jsp&quot;</span>);
+			request.<span style='color:#644a9b;'>getSession</span>().<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;new&quot;</span>, <span style='color:#bf0303;'>&quot;confirm&quot;</span>);
+		} <b>else</b> <b>if</b> (((<b><span style='color:#0095ff;'>String</span></b>) request.<span style='color:#644a9b;'>getSession</span>().<span style='color:#644a9b;'>getAttribute</span>(<span style='color:#bf0303;'>&quot;new&quot;</span>))
+				.<span style='color:#644a9b;'>equals</span>(<span style='color:#bf0303;'>&quot;confirm&quot;</span>)) {
+			HttpSession s = request.<span style='color:#644a9b;'>getSession</span>();
+			cas.<span style='color:#644a9b;'>addRecord</span>(cid, (<b><span style='color:#0095ff;'>String</span></b>) s.<span style='color:#644a9b;'>getAttribute</span>(<span style='color:#bf0303;'>&quot;cname&quot;</span>), (<b><span style='color:#0095ff;'>String</span></b>) s
+					.<span style='color:#644a9b;'>getAttribute</span>(<span style='color:#bf0303;'>&quot;phone&quot;</span>), (<b><span style='color:#0095ff;'>String</span></b>) s.<span style='color:#644a9b;'>getAttribute</span>(<span style='color:#bf0303;'>&quot;mobile&quot;</span>),
+					(<b><span style='color:#0095ff;'>String</span></b>) s.<span style='color:#644a9b;'>getAttribute</span>(<span style='color:#bf0303;'>&quot;address&quot;</span>));
+			response.<span style='color:#644a9b;'>sendRedirect</span>(<span style='color:#bf0303;'>&quot;../cusinfo.jsp&quot;</span>);
+			request.<span style='color:#644a9b;'>getSession</span>().<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;new&quot;</span>, <b>null</b>);
+		}
+		response.<span style='color:#644a9b;'>setContentType</span>(<span style='color:#bf0303;'>&quot;text/html&quot;</span>);
+		<b><span style='color:#0095ff;'>PrintWriter</span></b> out = response.<span style='color:#644a9b;'>getWriter</span>();
+		out
+				.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;&lt;!DOCTYPE HTML PUBLIC </span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'>-//W3C//DTD HTML 4.01 Transitional//EN</span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'>&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;&lt;HTML&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;  &lt;HEAD&gt;&lt;TITLE&gt;A Servlet&lt;/TITLE&gt;&lt;/HEAD&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;  &lt;BODY&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;    This is &quot;</span>);
+		out.<span style='color:#644a9b;'>print</span>(<b>this</b>.<span style='color:#644a9b;'>getClass</span>());
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;, using the POST method&quot;</span>);
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;  &lt;/BODY&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>println</span>(<span style='color:#bf0303;'>&quot;&lt;/HTML&gt;&quot;</span>);
+		out.<span style='color:#644a9b;'>flush</span>();
+		out.<span style='color:#644a9b;'>close</span>();
+	}
+
+	<b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>	 * Initialization of the servlet. </span></b><b>&lt;br&gt;</b>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@throws </span></b><i><span style='color:#008080;'>ServletException</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'>             if an error occurs</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*/</span></b>
+	<b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>init</span>() <b>throws</b> ServletException {
+		<span style='color:#898887;'>// Put your code here</span>
+	}
+
+}
+</pre>
+</body>
+</html>

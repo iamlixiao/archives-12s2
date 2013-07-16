@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>modData.jsp</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b><i><span style='color:#0000ff;'>&lt;%@ page</span></i></b><span style='color:#006e28;'> language</span>=<span style='color:#bf0303;'>&quot;java&quot;</span><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.util.*&quot;</span><span style='color:#006e28;'> pageEncoding</span>=<span style='color:#bf0303;'>&quot;GBK&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@page</span></i></b><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.sql.*&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@page</span></i></b><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.text.*&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><span style='color:#000000;'>&lt;%</span></b>
+<b><span style='color:#0095ff;'>String</span></b> path = request.getContextPath();
+<b><span style='color:#0095ff;'>String</span></b> basePath = request.getScheme()+<span style='color:#bf0303;'>&quot;://&quot;</span>+request.getServerName()+<span style='color:#bf0303;'>&quot;:&quot;</span>+request.getServerPort()+path+<span style='color:#bf0303;'>&quot;/&quot;</span>;
+<b><span style='color:#000000;'>%&gt;</span></b>
+
+&lt;<span style='color:#006e28;'>!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span>&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;base<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>basePath<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span>&gt;
+
+		&lt;title&gt;修改结果&lt;/title&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;refresh&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;2;url=user.jsp?act=my&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;pragma&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;no-cache&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;cache-control&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;no-cache&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;expires&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;0&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;keywords&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;keyword1,keyword2,keyword3&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;description&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;This is my page&quot;</span>&gt;
+		<span style='color:#898887;'>&lt;!--</span>
+<span style='color:#898887;'>	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;</span>
+<span style='color:#898887;'>	--&gt;</span>
+
+	&lt;/head&gt;
+
+	&lt;body&gt;
+		<b><i><span style='color:#0000ff;'>&lt;jsp:useBean</span></i></b><span style='color:#006e28;'> id</span>=<span style='color:#bf0303;'>&quot;acc&quot;</span><span style='color:#006e28;'> class</span>=<span style='color:#bf0303;'>&quot;pj.Account&quot;</span><span style='color:#006e28;'> scope</span>=<span style='color:#bf0303;'>&quot;session&quot;</span><b><i><span style='color:#0000ff;'>&gt;&lt;/jsp:useBean&gt;</span></i></b>
+		<b><span style='color:#000000;'>&lt;%</span></b>request.setCharacterEncoding(<span style='color:#bf0303;'>&quot;GBK&quot;</span>);
+		<b>if</b>(request.getSession().getAttribute(<span style='color:#bf0303;'>&quot;logged&quot;</span>)==<b>null</b>){ <b><span style='color:#000000;'>%&gt;</span></b>
+		登录出错
+		<b><span style='color:#000000;'>&lt;%</span></b>}<b>else</b> <b>if</b>(request.getParameter(<span style='color:#bf0303;'>&quot;nick&quot;</span>)==<b>null</b>){ <b><span style='color:#000000;'>%&gt;</span></b>
+		昵称为空
+		<b><span style='color:#000000;'>&lt;%</span></b>}<b>else</b> <b>if</b>(acc.getIdByNick(request.getParameter(<span style='color:#bf0303;'>&quot;nick&quot;</span>))!=((<b><span style='color:#0095ff;'>Integer</span></b>)request.getSession().getAttribute(<span style='color:#bf0303;'>&quot;logged&quot;</span>)).intValue()){ <b>if</b>(acc.getIdByNick(request.getParameter(<span style='color:#bf0303;'>&quot;nick&quot;</span>))!=<b>null</b>){<b><span style='color:#000000;'>%&gt;</span></b>
+		昵称有误
+		<b><span style='color:#000000;'>&lt;%</span></b>}}<b>else</b> <b>if</b>(request.getParameter(<span style='color:#bf0303;'>&quot;email&quot;</span>)==<b>null</b>){ <b><span style='color:#000000;'>%&gt;</span></b>
+		邮箱为空
+		<b><span style='color:#000000;'>&lt;%</span></b>}<b>else</b> <b>if</b>(request.getParameter(<span style='color:#bf0303;'>&quot;birthday&quot;</span>)==<b>null</b>){ <b><span style='color:#000000;'>%&gt;</span></b>
+		生日为空
+		<b><span style='color:#000000;'>&lt;%</span></b>}<b>else</b> <b>if</b>(request.getParameter(<span style='color:#bf0303;'>&quot;comment&quot;</span>)==<b>null</b>){ <b><span style='color:#000000;'>%&gt;</span></b>
+		简介为空
+		<b><span style='color:#000000;'>&lt;%</span></b>}<b>else</b>{
+			<b><span style='color:#0095ff;'>SimpleDateFormat</span></b> f = <b>new</b> <b><span style='color:#0095ff;'>SimpleDateFormat</span></b>(<span style='color:#bf0303;'>&quot;yyyy-MM-dd&quot;</span>);
+  		java.util.<b><span style='color:#0095ff;'>Date</span></b> birthday=f.parse(request.getParameter(<span style='color:#bf0303;'>&quot;birthday&quot;</span>));
+  		<b>if</b>(birthday==<b>null</b>){
+  	<b><span style='color:#000000;'>%&gt;</span></b>
+		生日有误
+		<b><span style='color:#000000;'>&lt;%</span></b>}<b>else</b> <b>if</b>(!acc.modifyData((<b><span style='color:#0095ff;'>Integer</span></b>)request.getSession().getAttribute(<span style='color:#bf0303;'>&quot;logged&quot;</span>),request.getParameter(<span style='color:#bf0303;'>&quot;nick&quot;</span>),request.getParameter(<span style='color:#bf0303;'>&quot;email&quot;</span>),birthday,request.getParameter(<span style='color:#bf0303;'>&quot;comment&quot;</span>),request.getParameter(<span style='color:#bf0303;'>&quot;s2&quot;</span>))){ <b><span style='color:#000000;'>%&gt;</span></b>
+		修改失败
+		<b><span style='color:#000000;'>&lt;%</span></b>}<b>else</b>{ <b><span style='color:#000000;'>%&gt;</span></b>修改成功<b><span style='color:#000000;'>&lt;%</span></b>}} <b><span style='color:#000000;'>%&gt;</span></b>
+		&lt;br&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>

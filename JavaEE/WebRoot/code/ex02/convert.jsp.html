@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>convert.jsp</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+&lt;<span style='color:#006e28;'>?xml version</span>=<span style='color:#0057ae;'>&quot;1.0&quot;</span><span style='color:#006e28;'> encoding</span>=<span style='color:#0057ae;'>&quot;GBK&quot;</span><span style='color:#006e28;'> ?</span>&gt;
+<b><i><span style='color:#0000ff;'>&lt;%@ page</span></i></b><span style='color:#006e28;'> language</span>=<span style='color:#bf0303;'>&quot;java&quot;</span><span style='color:#006e28;'> contentType</span>=<span style='color:#bf0303;'>&quot;text/html; charset=GBK&quot;</span>
+<span style='color:#006e28;'>	pageEncoding</span>=<span style='color:#bf0303;'>&quot;GBK&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@taglib</span></i></b><span style='color:#006e28;'> uri</span>=<span style='color:#bf0303;'>&quot;/WEB-INF/convertTag.tld&quot;</span><span style='color:#006e28;'> prefix</span>=<span style='color:#bf0303;'>&quot;conv&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+&lt;<span style='color:#006e28;'>!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;</span>&gt;
+&lt;html<span style='color:#006e28;'> xmlns</span>=<span style='color:#0057ae;'>&quot;http://www.w3.org/1999/xhtml&quot;</span>&gt;
+&lt;head&gt;
+&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;Content-Type&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;text/html; charset=GBK&quot;</span><span style='color:#006e28;'> </span>/&gt;
+&lt;title&gt;大写金额&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;h1&gt;转换&lt;/h1&gt;
+	&lt;div&gt;<b><span style='color:#000000;'>&lt;%=</span></b>request.getParameter(<span style='color:#bf0303;'>&quot;num&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+	&lt;div&gt;
+		<b>&lt;conv:num2shu&gt;</b><b><span style='color:#000000;'>&lt;%=</span></b>request.getParameter(<span style='color:#bf0303;'>&quot;num&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b><b>&lt;/conv:num2shu&gt;</b>
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>

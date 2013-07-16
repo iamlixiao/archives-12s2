@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>Convert.java</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b>package</b><span style='color:#808000;'> numconv;</span>
+
+<b>import</b><span style='color:#808000;'> javax.servlet.jsp.JspException;</span>
+<b>import</b><span style='color:#808000;'> javax.servlet.jsp.JspWriter;</span>
+<b>import</b><span style='color:#808000;'> javax.servlet.jsp.tagext.BodyTagSupport;</span>
+
+<b>public</b> <b>class</b> Convert <b>extends</b> BodyTagSupport {
+	<b>public</b> <span style='color:#0057ae;'>int</span> <span style='color:#644a9b;'>doEndTag</span>() <b>throws</b> JspException {
+		<b><span style='color:#0095ff;'>String</span></b>[] nums = <span style='color:#644a9b;'>getBodyContent</span>().<span style='color:#644a9b;'>getString</span>().<span style='color:#644a9b;'>split</span>(<span style='color:#bf0303;'>&quot;[.]&quot;</span>);
+		<b><span style='color:#0095ff;'>String</span></b> num = nums[<span style='color:#b08000;'>0</span>];
+		JspWriter out = pageContext.<span style='color:#644a9b;'>getOut</span>();
+		<span style='color:#0057ae;'>int</span> l = num.<span style='color:#644a9b;'>length</span>(), l0 = (l - <span style='color:#b08000;'>1</span>) % <span style='color:#b08000;'>16</span>, l1 = (l - <span style='color:#b08000;'>1</span>) % <span style='color:#b08000;'>8</span>, l2 = (l - <span style='color:#b08000;'>1</span>) % <span style='color:#b08000;'>4</span>;
+		<span style='color:#0057ae;'>boolean</span> zero = <b>false</b>, head0 = <b>true</b>,head1=<b>true</b>;
+		<b>try</b> {
+			<b>if</b> (num.<span style='color:#644a9b;'>length</span>() &lt; <span style='color:#b08000;'>17</span>) {
+				<b>for</b> (<span style='color:#0057ae;'>int</span> i = <span style='color:#b08000;'>0</span>; i &lt; num.<span style='color:#644a9b;'>length</span>(); ++i) {
+					<b>switch</b> (num.<span style='color:#644a9b;'>charAt</span>(i)) {
+					<b>case</b> <span style='color:#924c9d;'>'0'</span>:
+						zero = <b>true</b>;
+						<b>break</b>;
+					<b>case</b> <span style='color:#924c9d;'>'1'</span>:
+						<b>if</b> (zero)
+							out.<span style='color:#644a9b;'>print</span>('Áã');
+						out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;ÒŒ&quot;</span>);
+						head0 = <b>true</b>;
+						head1 = <b>true</b>;
+						zero = <b>false</b>;
+						<b>break</b>;
+					<b>case</b> <span style='color:#924c9d;'>'2'</span>:
+						<b>if</b> (zero)
+							out.<span style='color:#644a9b;'>print</span>('Áã');
+						out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;·¡&quot;</span>);
+						head0 = <b>true</b>;
+						head1 = <b>true</b>;
+						zero = <b>false</b>;
+						<b>break</b>;
+					<b>case</b> <span style='color:#924c9d;'>'3'</span>:
+						<b>if</b> (zero)
+							out.<span style='color:#644a9b;'>print</span>('Áã');
+						out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;Èþ&quot;</span>);
+						head0 = <b>true</b>;
+						head1 = <b>true</b>;
+						zero = <b>false</b>;
+						<b>break</b>;
+					<b>case</b> <span style='color:#924c9d;'>'4'</span>:
+						<b>if</b> (zero)
+							out.<span style='color:#644a9b;'>print</span>('Áã');
+						out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;ËÁ&quot;</span>);
+						head0 = <b>true</b>;
+						head1 = <b>true</b>;
+						zero = <b>false</b>;
+						<b>break</b>;
+					<b>case</b> <span style='color:#924c9d;'>'5'</span>:
+						<b>if</b> (zero)
+							out.<span style='color:#644a9b;'>print</span>('Áã');
+						out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;Îé&quot;</span>);
+						head0 = <b>true</b>;
+						zero = <b>false</b>;
+						<b>break</b>;
+					<b>case</b> <span style='color:#924c9d;'>'6'</span>:
+						<b>if</b> (zero)
+							out.<span style='color:#644a9b;'>print</span>('Áã');
+						out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;Âœ&quot;</span>);
+						head0 = <b>true</b>;
+						head1 = <b>true</b>;
+						zero = <b>false</b>;
+						<b>break</b>;
+					<b>case</b> <span style='color:#924c9d;'>'7'</span>:
+						<b>if</b> (zero)
+							out.<span style='color:#644a9b;'>print</span>('Áã');
+						out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;Æâ&quot;</span>);
+						head0 = <b>true</b>;
+						head1 = <b>true</b>;
+						zero = <b>false</b>;
+						<b>break</b>;
+					<b>case</b> <span style='color:#924c9d;'>'8'</span>:
+						<b>if</b> (zero)
+							out.<span style='color:#644a9b;'>print</span>('Áã');
+						out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;°Æ&quot;</span>);
+						head0 = <b>true</b>;
+						head1 = <b>true</b>;
+						zero = <b>false</b>;
+						<b>break</b>;
+					<b>case</b> <span style='color:#924c9d;'>'9'</span>:
+						<b>if</b> (zero)
+							out.<span style='color:#644a9b;'>print</span>('Áã');
+						out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;ŸÁ&quot;</span>);
+						head0 = <b>true</b>;
+						head1 = <b>true</b>;
+						zero = <b>false</b>;
+						<b>break</b>;
+					}
+					<b>switch</b> (l2) {
+					<b>case</b> <span style='color:#b08000;'>0</span>:
+						l2 = <span style='color:#b08000;'>3</span>;
+						<b>break</b>;
+					<b>case</b> <span style='color:#b08000;'>1</span>:
+						<b>if</b> (!zero)
+							out.<span style='color:#644a9b;'>print</span>('Ê°');
+						--l2;
+						<b>break</b>;
+					<b>case</b> <span style='color:#b08000;'>2</span>:
+						<b>if</b> (!zero)
+							out.<span style='color:#644a9b;'>print</span>('°Û');
+						--l2;
+						<b>break</b>;
+					<b>case</b> <span style='color:#b08000;'>3</span>:
+						<b>if</b> (!zero)
+							out.<span style='color:#644a9b;'>print</span>('Çª');
+						--l2;
+						<b>break</b>;
+					}
+					<b>switch</b> (l1) {
+					<b>case</b> <span style='color:#b08000;'>4</span>:
+						<b>if</b> (head0&amp;head1)
+							out.<span style='color:#644a9b;'>print</span>('Íò');
+						head1 = <b>false</b>;
+						zero=<b>false</b>;
+						--l1;
+						<b>break</b>;
+					<b>case</b> <span style='color:#b08000;'>0</span>:
+						l1 = <span style='color:#b08000;'>7</span>;
+						<b>break</b>;
+					<b>default</b>:
+						--l1;
+					}
+					<b>switch</b> (l0) {
+					<b>case</b> <span style='color:#b08000;'>8</span>:
+						<b>if</b> (head0)
+							out.<span style='color:#644a9b;'>print</span>('ÒÚ');
+						head0 = <b>false</b>;
+						zero=<b>false</b>;
+						--l0;
+						<b>break</b>;
+					<b>case</b> <span style='color:#b08000;'>0</span>:
+						l0 = <span style='color:#b08000;'>15</span>;
+						<b>break</b>;
+					<b>default</b>:
+						--l0;
+					}
+				}
+				out.<span style='color:#644a9b;'>print</span>('Ôª');
+				<b>if</b> (nums.<span style='color:#644a9b;'>length</span> &gt; <span style='color:#b08000;'>1</span>) {
+					<b><span style='color:#0095ff;'>String</span></b> cha = nums[<span style='color:#b08000;'>1</span>];
+					<b>if</b> (cha.<span style='color:#644a9b;'>length</span>() &gt; <span style='color:#b08000;'>0</span>) {
+						out.<span style='color:#644a9b;'>print</span>(<span style='color:#644a9b;'>num2shu</span>(cha.<span style='color:#644a9b;'>charAt</span>(<span style='color:#b08000;'>0</span>)));
+						out.<span style='color:#644a9b;'>print</span>('œÇ');
+					}
+					<b>if</b> (cha.<span style='color:#644a9b;'>length</span>() &gt; <span style='color:#b08000;'>1</span>) {
+						<b><span style='color:#0095ff;'>String</span></b> n = cha.<span style='color:#644a9b;'>substring</span>(<span style='color:#b08000;'>1</span>, <span style='color:#b08000;'>2</span>) + <span style='color:#924c9d;'>'.'</span> + cha.<span style='color:#644a9b;'>substring</span>(<span style='color:#b08000;'>2</span>);
+						<span style='color:#0057ae;'>long</span> c = <b><span style='color:#0095ff;'>Math</span></b>.<span style='color:#644a9b;'>round</span>(<b><span style='color:#0095ff;'>Double</span></b>.<span style='color:#644a9b;'>parseDouble</span>(n));
+						out.<span style='color:#644a9b;'>print</span>(<span style='color:#644a9b;'>num2shu</span>(<b><span style='color:#0095ff;'>String</span></b>.<span style='color:#644a9b;'>valueOf</span>(c).<span style='color:#644a9b;'>charAt</span>(<span style='color:#b08000;'>0</span>)));
+						out.<span style='color:#644a9b;'>print</span>('·Ö');
+					}
+				}
+			}
+			<b>else</b> out.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;°¡¹þ¹þ£¬ÌìÆø²»Ží£¬·ç¶ùÓÐµãÐúÏùÄØ&quot;</span>);
+		} <b>catch</b> (java.<span style='color:#644a9b;'>io</span>.<span style='color:#644a9b;'>IOException</span> e) {
+		}
+		<b>return</b> EVAL_PAGE;
+	}
+
+	<span style='color:#0057ae;'>char</span> <span style='color:#644a9b;'>num2shu</span>(<span style='color:#0057ae;'>char</span> a) {
+		<b>switch</b> (a) {
+		<b>case</b> <span style='color:#924c9d;'>'0'</span>:
+			<b>return</b> 'Áã';
+		<b>case</b> <span style='color:#924c9d;'>'1'</span>:
+			<b>return</b> 'ÒŒ';
+		<b>case</b> <span style='color:#924c9d;'>'2'</span>:
+			<b>return</b> '·¡';
+		<b>case</b> <span style='color:#924c9d;'>'3'</span>:
+			<b>return</b> 'Èþ';
+		<b>case</b> <span style='color:#924c9d;'>'4'</span>:
+			<b>return</b> 'ËÁ';
+		<b>case</b> <span style='color:#924c9d;'>'5'</span>:
+			<b>return</b> 'Îé';
+		<b>case</b> <span style='color:#924c9d;'>'6'</span>:
+			<b>return</b> 'Âœ';
+		<b>case</b> <span style='color:#924c9d;'>'7'</span>:
+			<b>return</b> 'Æâ';
+		<b>case</b> <span style='color:#924c9d;'>'8'</span>:
+			<b>return</b> '°Æ';
+		<b>default</b>:
+			<b>return</b> 'ŸÁ';
+		}
+	}
+}
+</pre>
+</body>
+</html>

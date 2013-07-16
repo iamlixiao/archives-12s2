@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+	<servlet>
+		<description></description>
+		<display-name>FirstServlet</display-name>
+		<servlet-name>FirstServlet</servlet-name>
+		<servlet-class>ch03.FirstServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FirstServlet</servlet-name>
+		<url-pattern>/ch03/first</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>OnlineTest</display-name>
+		<servlet-name>OnlineTest</servlet-name>
+		<servlet-class>ch03.OnlineTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OnlineTest</servlet-name>
+		<url-pattern>/ch03/onlinetest</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>Let's chat!</description>
+		<display-name>ChatRoom</display-name>
+		<servlet-name>ChatRoom</servlet-name>
+		<servlet-class>ch03.ChatRoom</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChatRoom</servlet-name>
+		<url-pattern>/ch03/chatroom</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>LoginPage</display-name>
+		<servlet-name>LoginPage</servlet-name>
+		<servlet-class>general.LoginPage</servlet-class>
+	</servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CusCtl</servlet-name>
+    <servlet-class>cusinfo.CusCtl</servlet-class>
+  </servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoginPage</servlet-name>
+		<url-pattern>/loginpage</url-pattern>
+	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CusCtl</servlet-name>
+    <url-pattern>/cusinfo/cusctl</url-pattern>
+  </servlet-mapping>
+	<filter>
+		<filter-name>CodeFilter</filter-name>
+		<filter-class>general.CodeFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CodeFilter</filter-name>
+		<url-pattern>/code/*</url-pattern>
+	</filter-mapping>
+</web-app>

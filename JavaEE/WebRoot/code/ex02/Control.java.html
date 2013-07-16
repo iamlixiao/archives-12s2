@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>Control.java</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b>package</b><span style='color:#808000;'> lab02.fm.action;</span>
+
+<b>import</b><span style='color:#808000;'> java.io.IOException;</span>
+<b>import</b><span style='color:#808000;'> javax.servlet.ServletException;</span>
+<b>import</b><span style='color:#808000;'> javax.servlet.http.HttpServlet;</span>
+<b>import</b><span style='color:#808000;'> javax.servlet.http.HttpServletRequest;</span>
+<b>import</b><span style='color:#808000;'> javax.servlet.http.HttpServletResponse;</span>
+<b>import</b><span style='color:#808000;'> javax.servlet.http.HttpSession;</span>
+
+<b>import</b><span style='color:#808000;'> lab02.fm.service.Guessnum;</span>
+
+<b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'> * Servlet implementation class Control</span></b>
+<b><span style='color:#008000;'> */</span></b>
+<b>public</b> <b>class</b> <b><span style='color:#0095ff;'>Control</span></b> <b>extends</b> HttpServlet {
+	<b>private</b> <span style='color:#0057ae;'>static</span> <span style='color:#0057ae;'>final</span> <span style='color:#0057ae;'>long</span> serialVersionUID = <span style='color:#b08000;'>1L</span>;
+
+	<b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>	 * </span></b><b><span style='color:#808080;'>@see </span></b><i><span style='color:#008080;'>HttpServlet#HttpServlet()</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*/</span></b>
+	<b>public</b> <b><span style='color:#0095ff;'>Control</span></b>() {
+		<b>super</b>();
+		<span style='color:#898887;'>// TODO Auto-generated constructor stub</span>
+	}
+
+	<b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>	 * </span></b><b><span style='color:#808080;'>@see </span></b><i><span style='color:#008080;'>HttpServlet#doGet(HttpServletRequest request, HttpServletResponse</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'>      response)</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*/</span></b>
+	<b>protected</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>doGet</span>(HttpServletRequest request,
+			HttpServletResponse response) <b>throws</b> ServletException, <b><span style='color:#0095ff;'>IOException</span></b> {
+		HttpSession s = request.<span style='color:#644a9b;'>getSession</span>();
+		response.<span style='color:#644a9b;'>setCharacterEncoding</span>(<span style='color:#bf0303;'>&quot;GBK&quot;</span>);
+		Guessnum gs = (Guessnum) s.<span style='color:#644a9b;'>getAttribute</span>(<span style='color:#bf0303;'>&quot;data&quot;</span>);
+		<b>if</b> (gs == <b>null</b>) {
+			gs = <b>new</b> <span style='color:#644a9b;'>Guessnum</span>();
+			gs.<span style='color:#644a9b;'>setNum</span>((<span style='color:#0057ae;'>int</span>) <b><span style='color:#0095ff;'>Math</span></b>.<span style='color:#644a9b;'>round</span>((<b><span style='color:#0095ff;'>Math</span></b>.<span style='color:#644a9b;'>random</span>() * <span style='color:#b08000;'>120</span> + <span style='color:#b08000;'>40</span>)));
+			s.<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;data&quot;</span>, gs);
+		}
+		<b>if</b> (request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;num&quot;</span>) == <b>null</b>)
+			response.<span style='color:#644a9b;'>getWriter</span>().<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;请输入数字！&quot;</span>);
+		<b>else</b> <b>if</b> (request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;num&quot;</span>).<span style='color:#644a9b;'>length</span>() == <span style='color:#b08000;'>0</span>)
+			response.<span style='color:#644a9b;'>getWriter</span>().<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;请输入数字！&quot;</span>);
+		<b>else</b> {
+			response.<span style='color:#644a9b;'>getWriter</span>()
+					.<span style='color:#644a9b;'>print</span>(<span style='color:#bf0303;'>&quot;&lt;!DOCTYPE html PUBLIC </span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'>-//W3C//DTD XHTML 1.0 Transitional//EN</span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'> </span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'>http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'>&gt;&lt;html xmlns=</span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'>http://www.w3.org/1999/xhtml</span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'>&gt;&lt;head&gt;&lt;meta http-equiv=</span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'>Content-Type</span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'> content=</span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'>text/html; charset=GBK</span><span style='color:#924c9d;'>\&quot;</span><span style='color:#bf0303;'> /&gt;&lt;title&gt;Insert title here&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&quot;</span>
+							+ <span style='color:#644a9b;'>pd</span>(<b><span style='color:#0095ff;'>Integer</span></b>.<span style='color:#644a9b;'>parseInt</span>(request.<span style='color:#644a9b;'>getParameter</span>(<span style='color:#bf0303;'>&quot;num&quot;</span>)),
+									gs, s) + <span style='color:#bf0303;'>&quot;&lt;/body&gt;&lt;/html&gt;&quot;</span>);
+
+		}
+	}
+
+	<b><span style='color:#0095ff;'>String</span></b> <span style='color:#644a9b;'>pd</span>(<span style='color:#0057ae;'>int</span> n, Guessnum gs, HttpSession s) {
+		<b>if</b> (n == gs.<span style='color:#644a9b;'>getNum</span>()) {
+			Guessnum g = <b>new</b> <span style='color:#644a9b;'>Guessnum</span>();
+			g.<span style='color:#644a9b;'>setVsn</span>(<span style='color:#b08000;'>1</span>);
+			g.<span style='color:#644a9b;'>setNum</span>((<span style='color:#0057ae;'>int</span>) <b><span style='color:#0095ff;'>Math</span></b>.<span style='color:#644a9b;'>round</span>((<b><span style='color:#0095ff;'>Math</span></b>.<span style='color:#644a9b;'>random</span>() * <span style='color:#b08000;'>120</span> + <span style='color:#b08000;'>40</span>)));
+			s.<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;data&quot;</span>, g);
+			<b>return</b> <span style='color:#bf0303;'>&quot;恭喜你！猜中了！重新开始&quot;</span>;
+		} <b>else</b> <b>if</b> (gs.<span style='color:#644a9b;'>getGsn</span>() &lt; <span style='color:#b08000;'>10</span>) {
+			gs.<span style='color:#644a9b;'>setGsn</span>(gs.<span style='color:#644a9b;'>getGsn</span>() + <span style='color:#b08000;'>1</span>);
+			<b>return</b> <span style='color:#bf0303;'>&quot;错误,&quot;</span>+<b><span style='color:#0095ff;'>String</span></b>.<span style='color:#644a9b;'>valueOf</span>(gs.<span style='color:#644a9b;'>getGsn</span>());
+		} <b>else</b> {
+			s.<span style='color:#644a9b;'>removeAttribute</span>(<span style='color:#bf0303;'>&quot;data&quot;</span>);
+			Guessnum g = <b>new</b> <span style='color:#644a9b;'>Guessnum</span>();
+			g.<span style='color:#644a9b;'>setVsn</span>(<span style='color:#b08000;'>1</span>);
+			g.<span style='color:#644a9b;'>setNum</span>((<span style='color:#0057ae;'>int</span>) <b><span style='color:#0095ff;'>Math</span></b>.<span style='color:#644a9b;'>round</span>((<b><span style='color:#0095ff;'>Math</span></b>.<span style='color:#644a9b;'>random</span>() * <span style='color:#b08000;'>120</span> + <span style='color:#b08000;'>40</span>)));
+			s.<span style='color:#644a9b;'>setAttribute</span>(<span style='color:#bf0303;'>&quot;data&quot;</span>, g);
+			<b>return</b> <span style='color:#bf0303;'>&quot;你已经没有机会了，重新开始&quot;</span>;
+		}
+	}
+
+	<b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>	 * </span></b><b><span style='color:#808080;'>@see </span></b><i><span style='color:#008080;'>HttpServlet#doPost(HttpServletRequest request, HttpServletResponse</span></i>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'>      response)</span>
+<span style='color:#008000;'>	 </span><b><span style='color:#008000;'>*/</span></b>
+	<b>protected</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>doPost</span>(HttpServletRequest request,
+			HttpServletResponse response) <b>throws</b> ServletException, <b><span style='color:#0095ff;'>IOException</span></b> {
+		<span style='color:#898887;'>// TODO Auto-generated method stub</span>
+	}
+
+}
+</pre>
+</body>
+</html>

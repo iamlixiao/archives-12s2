@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="GBK">
+<title>计算立方</title>
+</head>
+<body>
+<pre>&lt;?xml version="1.0" encoding="GBK" ?&gt;
+&lt;%@ page language="java" contentType="text/html; charset=GBK"
+	pageEncoding="GBK"%&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=GBK" /&gt;
+&lt;title&gt;计算立方&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;%
+		if (request.getParameter("num") != null) {
+	%&gt;
+	&lt;jsp:forward page="cubiccal.jsp"&gt;
+		&lt;jsp:param name="num" value="&lt;%=request.getParameter(\"num\")%&gt;" /&gt;
+	&lt;/jsp:forward&gt;
+	&lt;%
+		}
+	%&gt;
+	&lt;h1&gt;计算立方&lt;/h1&gt;
+	&lt;form method="get" action="calculatecubic.jsp"&gt;
+		&lt;input name="num" type="text" /&gt;
+		&lt;div&gt;
+			&lt;input type="submit" /&gt;&lt;input type="reset" /&gt;
+		&lt;/div&gt;
+	&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>

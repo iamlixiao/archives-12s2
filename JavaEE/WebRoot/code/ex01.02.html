@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="GBK">
+<title>Insert title here</title>
+</head>
+<body>
+<pre>package ch03;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class FirstServlet
+ */
+public class FirstServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	String htmltxta = "&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=\"GBK\"&gt;&lt;title&gt;欢迎&lt;/title&gt;&lt;/head&gt;&lt;body&gt;",
+			htmltxte = "&lt;/body&gt;&lt;/html&gt;";
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("GBK");
+		PrintWriter out=response.getWriter();
+		out.print(htmltxta+"“我的第一个Java Servlet”、&lt;br/&gt;李霄、10300240007、&lt;br/&gt;欢迎使用本系统"+htmltxte);
+	}
+
+}
+</pre>
+</body>
+</html>

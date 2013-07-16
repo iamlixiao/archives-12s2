@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>goods.jsp</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+&lt;<span style='color:#006e28;'>?xml version</span>=<span style='color:#0057ae;'>&quot;1.0&quot;</span><span style='color:#006e28;'> encoding</span>=<span style='color:#0057ae;'>&quot;GBK&quot;</span><span style='color:#006e28;'> ?</span>&gt;
+<b><i><span style='color:#0000ff;'>&lt;%@ page</span></i></b><span style='color:#006e28;'> language</span>=<span style='color:#bf0303;'>&quot;java&quot;</span><span style='color:#006e28;'> contentType</span>=<span style='color:#bf0303;'>&quot;text/html; charset=GBK&quot;</span>
+<span style='color:#006e28;'>	pageEncoding</span>=<span style='color:#bf0303;'>&quot;GBK&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@page</span></i></b><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.util.*&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@page</span></i></b><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;mall.GoodsData&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+&lt;<span style='color:#006e28;'>!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;</span>&gt;
+&lt;html<span style='color:#006e28;'> xmlns</span>=<span style='color:#0057ae;'>&quot;http://www.w3.org/1999/xhtml&quot;</span>&gt;
+&lt;head&gt;
+&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;Content-Type&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;text/html; charset=GBK&quot;</span><span style='color:#006e28;'> </span>/&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	<b><span style='color:#000000;'>&lt;%</span></b>
+		<b><span style='color:#0095ff;'>Integer</span></b>[] troll = (<b><span style='color:#0095ff;'>Integer</span></b>[]) session.getAttribute(<span style='color:#bf0303;'>&quot;goods&quot;</span>);
+		<b><span style='color:#0095ff;'>String</span></b>[] todel = request.getParameterValues(<span style='color:#bf0303;'>&quot;goods&quot;</span>);
+		<b>if</b> (todel != <b>null</b>) {
+			<b>for</b> (<span style='color:#0057ae;'>int</span> i = <span style='color:#b08000;'>0</span>; i &lt; todel.length; ++i) {
+				troll[<b><span style='color:#0095ff;'>Integer</span></b>.parseInt(todel[i])] = <span style='color:#b08000;'>0</span>;
+			}
+		}
+	<b><span style='color:#000000;'>%&gt;</span></b>
+	&lt;form<span style='color:#006e28;'> action</span>=<span style='color:#0057ae;'>&quot;goods.jsp&quot;</span><span style='color:#006e28;'> method</span>=<span style='color:#0057ae;'>&quot;post&quot;</span>&gt;
+		&lt;table&gt;
+			&lt;tr&gt;
+				&lt;td<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;width: 100px&quot;</span>&gt;名称&lt;/td&gt;
+				&lt;td&gt;数量&lt;/td&gt;
+			&lt;/tr&gt;
+			<b><span style='color:#000000;'>&lt;%</span></b>
+				GoodsData data = <b>new</b> GoodsData();
+				<b>for</b> (<span style='color:#0057ae;'>int</span> i = <span style='color:#b08000;'>0</span>; i &lt; data.getItems().length; ++i) {
+					<b>if</b> (troll[i] != <span style='color:#b08000;'>0</span>) {
+			<b><span style='color:#000000;'>%&gt;</span></b>
+			&lt;tr&gt;
+				&lt;td&gt;&lt;input<span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;checkbox&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>i<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span><span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;goods&quot;</span><span style='color:#006e28;'> </span>/&gt;<b><span style='color:#000000;'>&lt;%=</span></b>data.getItems()[i]<b><span style='color:#000000;'>%&gt;</span></b>&lt;/td&gt;
+				&lt;td&gt;<b><span style='color:#000000;'>&lt;%=</span></b>troll[i]<b><span style='color:#000000;'>%&gt;</span></b>&lt;/td&gt;
+			&lt;/tr&gt;
+			<b><span style='color:#000000;'>&lt;%</span></b>
+				}
+				}
+			<b><span style='color:#000000;'>%&gt;</span></b>
+		&lt;/table&gt;
+		&lt;input<span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;submit&quot;</span><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;删除&quot;</span><span style='color:#006e28;'> </span>/&gt;
+	&lt;/form&gt;
+	&lt;a<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;goods.jsp?ac=check&quot;</span>&gt;结账&lt;/a&gt;
+	&lt;a<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;browse.jsp&quot;</span>&gt;返回购物&lt;/a&gt;
+	<b><span style='color:#000000;'>&lt;%</span></b>
+		<span style='color:#0057ae;'>int</span> sum = <span style='color:#b08000;'>0</span>;
+		<b><span style='color:#0095ff;'>String</span></b> ac = request.getParameter(<span style='color:#bf0303;'>&quot;ac&quot;</span>);
+		<b>if</b> (ac != <b>null</b>) {
+			<b>if</b> (ac.equals(<span style='color:#bf0303;'>&quot;check&quot;</span>)) {
+				<b>for</b> (<span style='color:#0057ae;'>int</span> i = <span style='color:#b08000;'>0</span>; i &lt; data.getPrizes().length; ++i) {
+					sum += troll[i] * data.getPrizes()[i];
+				}
+				out.println(<span style='color:#bf0303;'>&quot;&lt;div&gt;你的总金额为：&quot;</span>);
+				out.print(sum);
+				out.print(<span style='color:#bf0303;'>&quot;元&lt;/div&gt;&quot;</span>);
+				troll = <b>new</b> <b><span style='color:#0095ff;'>Integer</span></b>[data.getItems().length];
+				<b>for</b> (<span style='color:#0057ae;'>int</span> i = <span style='color:#b08000;'>0</span>; i &lt; data.getItems().length; ++i)
+					troll[i] = <span style='color:#b08000;'>0</span>;
+				session.setAttribute(<span style='color:#bf0303;'>&quot;goods&quot;</span>, troll);
+			}
+		}
+	<b><span style='color:#000000;'>%&gt;</span></b>
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>query.jsp</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b><i><span style='color:#0000ff;'>&lt;%@ page</span></i></b><span style='color:#006e28;'> language</span>=<span style='color:#bf0303;'>&quot;java&quot;</span><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.util.*&quot;</span><span style='color:#006e28;'> pageEncoding</span>=<span style='color:#bf0303;'>&quot;GBK&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@ taglib</span></i></b><span style='color:#006e28;'> uri</span>=<span style='color:#bf0303;'>&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span style='color:#006e28;'> prefix</span>=<span style='color:#bf0303;'>&quot;c&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@ taglib</span></i></b><span style='color:#006e28;'> uri</span>=<span style='color:#bf0303;'>&quot;http://java.sun.com/jsp/jstl/sql&quot;</span><span style='color:#006e28;'> prefix</span>=<span style='color:#bf0303;'>&quot;q&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><span style='color:#000000;'>&lt;%</span></b>
+<b><span style='color:#0095ff;'>String</span></b> path = request.getContextPath();
+<b><span style='color:#0095ff;'>String</span></b> basePath = request.getScheme()+<span style='color:#bf0303;'>&quot;://&quot;</span>+request.getServerName()+<span style='color:#bf0303;'>&quot;:&quot;</span>+request.getServerPort()+path+<span style='color:#bf0303;'>&quot;/&quot;</span>;
+		response.setCharacterEncoding(<span style='color:#bf0303;'>&quot;GBK&quot;</span>);
+		request.setCharacterEncoding(<span style='color:#bf0303;'>&quot;GBK&quot;</span>);
+		<b><span style='color:#0095ff;'>String</span></b> qt = request.getParameter(<span style='color:#bf0303;'>&quot;txt&quot;</span>);
+<b><span style='color:#000000;'>%&gt;</span></b>
+
+&lt;<span style='color:#006e28;'>!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span>&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;base<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>basePath<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span>&gt;
+    
+    &lt;title&gt;My JSP 'query.jsp' starting page&lt;/title&gt;
+    
+	&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;pragma&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;no-cache&quot;</span>&gt;
+	&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;cache-control&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;no-cache&quot;</span>&gt;
+	&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;expires&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;0&quot;</span>&gt;    
+	&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;keywords&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;keyword1,keyword2,keyword3&quot;</span>&gt;
+	&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;description&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;This is my page&quot;</span>&gt;
+	<span style='color:#898887;'>&lt;!--</span>
+<span style='color:#898887;'>	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;</span>
+<span style='color:#898887;'>	--&gt;</span>
+
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+		<b>&lt;q:setDataSource</b><span style='color:#006e28;'> var</span>=<span style='color:#0057ae;'>&quot;src&quot;</span><span style='color:#006e28;'> driver</span>=<span style='color:#0057ae;'>&quot;org.gjt.mm.mysql.Driver&quot;</span>
+<span style='color:#006e28;'>			url</span>=<span style='color:#0057ae;'>&quot;jdbc:mysql://10.12.8.28/je1024007&quot;</span><span style='color:#006e28;'> user</span>=<span style='color:#0057ae;'>&quot;je1024007&quot;</span>
+<span style='color:#006e28;'>			password</span>=<span style='color:#0057ae;'>&quot;278156&quot;</span><span style='color:#006e28;'> </span><b>/&gt;</b>
+		<b>&lt;q:query</b><span style='color:#006e28;'> var</span>=<span style='color:#0057ae;'>&quot;customers&quot;</span><span style='color:#006e28;'> dataSource</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>${</span></b>src<b><span style='color:#000000;'>}</span></b><span style='color:#0057ae;'>&quot;</span><b>&gt;</b>
+		select * from customer where name like ?
+		<b>&lt;q:param&gt;</b><b><span style='color:#000000;'>&lt;%=</span></b>request.getParameter(<span style='color:#bf0303;'>&quot;txt&quot;</span>)+<span style='color:#924c9d;'>'%'</span><b><span style='color:#000000;'>%&gt;</span></b><b>&lt;/q:param&gt;</b>
+		<b>&lt;/q:query&gt;</b>
+		&lt;table<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;border: 1px solid black&quot;</span>&gt;
+			&lt;tr&gt;
+				&lt;td&gt;
+					ID
+				&lt;/td&gt;
+				&lt;td&gt;
+					ÐÕÃû
+				&lt;/td&gt;
+				&lt;td&gt;
+					ÃÜÂë
+				&lt;/td&gt;
+				&lt;td&gt;
+					Email
+				&lt;/td&gt;
+			&lt;/tr&gt;
+			<b>&lt;c:forEach</b><span style='color:#006e28;'> var</span>=<span style='color:#0057ae;'>&quot;custrow&quot;</span><span style='color:#006e28;'> items</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>${</span></b>customers.rowsByIndex<b><span style='color:#000000;'>}</span></b><span style='color:#0057ae;'>&quot;</span><b>&gt;</b>
+				&lt;tr&gt;
+					<b>&lt;c:forEach</b><span style='color:#006e28;'> var</span>=<span style='color:#0057ae;'>&quot;custcol&quot;</span><span style='color:#006e28;'> items</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>${</span></b>custrow <b><span style='color:#000000;'>}</span></b><span style='color:#0057ae;'>&quot;</span><b>&gt;</b>
+						&lt;td&gt;
+							<b>&lt;c:out</b><span style='color:#006e28;'> value</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>${</span></b>custcol <b><span style='color:#000000;'>}</span></b><span style='color:#0057ae;'>&quot;</span><span style='color:#006e28;'> </span><b>/&gt;</b>
+						&lt;/td&gt;
+					<b>&lt;/c:forEach&gt;</b>
+				&lt;/tr&gt;
+			<b>&lt;/c:forEach&gt;</b>
+		&lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>

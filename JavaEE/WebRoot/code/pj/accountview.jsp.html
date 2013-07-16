@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>accountview.jsp</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b><i><span style='color:#0000ff;'>&lt;%@ page</span></i></b><span style='color:#006e28;'> language</span>=<span style='color:#bf0303;'>&quot;java&quot;</span><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.util.*&quot;</span><span style='color:#006e28;'> pageEncoding</span>=<span style='color:#bf0303;'>&quot;GBK&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;%@page</span></i></b><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.sql.*&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;jsp:useBean</span></i></b><span style='color:#006e28;'> id</span>=<span style='color:#bf0303;'>&quot;acc&quot;</span><span style='color:#006e28;'> class</span>=<span style='color:#bf0303;'>&quot;pj.Account&quot;</span><span style='color:#006e28;'> scope</span>=<span style='color:#bf0303;'>&quot;session&quot;</span><b><i><span style='color:#0000ff;'>&gt;&lt;/jsp:useBean&gt;</span></i></b>
+<b><span style='color:#000000;'>&lt;%</span></b>
+	<b><span style='color:#0095ff;'>String</span></b> path = request.getContextPath();
+	<b><span style='color:#0095ff;'>String</span></b> basePath = request.getScheme() + <span style='color:#bf0303;'>&quot;://&quot;</span>
+			+ request.getServerName() + <span style='color:#bf0303;'>&quot;:&quot;</span> + request.getServerPort()
+			+ path + <span style='color:#bf0303;'>&quot;/&quot;</span>;
+	<b>try</b> {
+		<b><span style='color:#0095ff;'>ResultSet</span></b> r = acc.getData(<b><span style='color:#0095ff;'>Integer</span></b>.parseInt(request
+				.getParameter(<span style='color:#bf0303;'>&quot;aid&quot;</span>)));
+		<b>if</b> (!r.next())
+			<b>throw</b> <b>new</b> <b><span style='color:#0095ff;'>Exception</span></b>();
+<b><span style='color:#000000;'>%&gt;</span></b>
+&lt;<span style='color:#006e28;'>!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span>&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;base<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;</span><b><span style='color:#000000;'>&lt;%=</span></b>basePath<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span>&gt;
+
+		&lt;title&gt;<b><span style='color:#000000;'>&lt;%=</span></b>r.getString(<span style='color:#bf0303;'>&quot;s2&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&lt;/title&gt;
+
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;pragma&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;no-cache&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;cache-control&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;no-cache&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;expires&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;0&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;keywords&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;keyword1,keyword2,keyword3&quot;</span>&gt;
+		&lt;meta<span style='color:#006e28;'> http-equiv</span>=<span style='color:#0057ae;'>&quot;description&quot;</span><span style='color:#006e28;'> content</span>=<span style='color:#0057ae;'>&quot;This is my page&quot;</span>&gt;
+		&lt;link<span style='color:#006e28;'> rel</span>=<span style='color:#0057ae;'>&quot;stylesheet&quot;</span><span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;text/css&quot;</span><span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;pj/x.css&quot;</span>&gt;
+		&lt;script<span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;text/javascript&quot;</span>&gt;
+			function first(){
+				document.getElementById(&quot;title&quot;).innerHTML=&quot;<b><span style='color:#000000;'>&lt;%=</span></b>r.getString(<span style='color:#bf0303;'>&quot;s2&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&quot;;
+			}
+		&lt;/script&gt;
+	&lt;/head&gt;
+
+	&lt;body<span style='color:#006e28;'> onload</span>=<span style='color:#0057ae;'>&quot;first()&quot;</span>&gt;
+		<b><i><span style='color:#0000ff;'>&lt;jsp:include</span></i></b><span style='color:#006e28;'> page</span>=<span style='color:#bf0303;'>&quot;topbar.jsp&quot;</span><b><i><span style='color:#0000ff;'>&gt;&lt;/jsp:include&gt;</span></i></b>
+		&lt;div<span style='color:#006e28;'> class</span>=<span style='color:#0057ae;'>&quot;mid&quot;</span>
+<span style='color:#006e28;'>			style</span>=<span style='color:#0057ae;'>&quot;margin: auto; width: 85%; height: 100%; display: table;&quot;</span>&gt;
+			&lt;div<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;display: table-row&quot;</span>&gt;
+				&lt;div<span style='color:#006e28;'> id</span>=<span style='color:#0057ae;'>&quot;left&quot;</span>&gt;
+					&lt;div<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;font-size: 32px; font-weight: bold&quot;</span>&gt;
+						<b><span style='color:#000000;'>&lt;%=</span></b>r.getString(<span style='color:#bf0303;'>&quot;anick&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>的动态
+					&lt;/div&gt;
+					<b><span style='color:#000000;'>&lt;%</span></b>
+						<b><span style='color:#0095ff;'>ResultSet</span></b> myrs = acc.getRecords(<b><span style='color:#0095ff;'>Integer</span></b>.parseInt(request
+									.getParameter(<span style='color:#bf0303;'>&quot;aid&quot;</span>)));
+							<b><span style='color:#0095ff;'>Boolean</span></b> me = <b><span style='color:#0095ff;'>Integer</span></b>.parseInt(request.getParameter(<span style='color:#bf0303;'>&quot;aid&quot;</span>)) == (<b><span style='color:#0095ff;'>Integer</span></b>) request
+									.getSession().getAttribute(<span style='color:#bf0303;'>&quot;logged&quot;</span>);
+							<b><span style='color:#0095ff;'>String</span></b> aid = request.getParameter(<span style='color:#bf0303;'>&quot;aid&quot;</span>);
+							<b>if</b> (myrs != <b>null</b>)
+								<b>while</b> (myrs.next()) {
+					<b><span style='color:#000000;'>%&gt;</span></b>
+					&lt;div
+<span style='color:#006e28;'>						style</span>=<span style='color:#0057ae;'>&quot;text-align: left; background: white; border-radius: 4px; box-shadow: 0 0 7px #0bd; margin: 1em 0 0 0&quot;</span>&gt;
+						&lt;div<span style='color:#006e28;'> class</span>=<span style='color:#0057ae;'>&quot;record-head&quot;</span>&gt;<b><span style='color:#000000;'>&lt;%=</span></b>acc.getNickById(<b><span style='color:#0095ff;'>Integer</span></b>.parseInt(aid))<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+						&lt;div<span style='color:#006e28;'> class</span>=<span style='color:#0057ae;'>&quot;record-body&quot;</span>&gt;<b><span style='color:#000000;'>&lt;%=</span></b>myrs.getString(<span style='color:#bf0303;'>&quot;content&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+						&lt;div<span style='color:#006e28;'> class</span>=<span style='color:#0057ae;'>&quot;record-foot&quot;</span>&gt;
+							<b><span style='color:#000000;'>&lt;%</span></b>
+								<b>if</b> (me) {
+							<b><span style='color:#000000;'>%&gt;</span></b>&lt;a<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;pj/user.jsp?act=delrecord&amp;rid=</span><b><span style='color:#000000;'>&lt;%=</span></b>myrs.getInt(<span style='color:#bf0303;'>&quot;rid&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span>&gt;删除&lt;/a&gt;
+							<b><span style='color:#000000;'>&lt;%</span></b>
+								}
+							<b><span style='color:#000000;'>%&gt;</span></b>
+							<b><span style='color:#000000;'>&lt;%=</span></b>myrs.getTimestamp(<span style='color:#bf0303;'>&quot;datetime&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+					&lt;/div&gt;
+					<b><span style='color:#000000;'>&lt;%</span></b>
+						}
+							<b>else</b>
+								out.print(<span style='color:#bf0303;'>&quot;没有动态&quot;</span>);
+					<b><span style='color:#000000;'>%&gt;</span></b>
+				&lt;/div&gt;
+				&lt;div<span style='color:#006e28;'> id</span>=<span style='color:#0057ae;'>&quot;right&quot;</span>&gt;
+					&lt;form<span style='color:#006e28;'> action</span>=<span style='color:#0057ae;'>&quot;pj/accountview.jsp&quot;</span>&gt;
+						查找用户
+						&lt;div&gt;
+							ID:
+							&lt;input<span style='color:#006e28;'> type</span>=<span style='color:#0057ae;'>&quot;text&quot;</span><span style='color:#006e28;'> name</span>=<span style='color:#0057ae;'>&quot;aid&quot;</span><span style='color:#006e28;'> </span>/&gt;
+						&lt;/div&gt;
+					&lt;/form&gt;
+					&lt;div<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;font-size: 28px; margin: 20px&quot;</span>&gt;
+						<b><span style='color:#000000;'>&lt;%=</span></b>r.getString(<span style='color:#bf0303;'>&quot;anick&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>的资料
+					&lt;/div&gt;
+					<b><span style='color:#000000;'>&lt;%</span></b>
+						<b>if</b> (!me) {
+					<b><span style='color:#000000;'>%&gt;</span></b>
+					&lt;div&gt;
+						<b><span style='color:#000000;'>&lt;%</span></b>
+							<b>if</b> (acc.isFriend((<b><span style='color:#0095ff;'>Integer</span></b>) request.getSession()
+											.getAttribute(<span style='color:#bf0303;'>&quot;logged&quot;</span>), <b><span style='color:#0095ff;'>Integer</span></b>.parseInt(request
+											.getParameter(<span style='color:#bf0303;'>&quot;aid&quot;</span>)))) {
+						<b><span style='color:#000000;'>%&gt;</span></b>
+						&lt;a
+<span style='color:#006e28;'>							href</span>=<span style='color:#0057ae;'>&quot;pj/user.jsp?act=delfriend&amp;a2id=</span><b><span style='color:#000000;'>&lt;%=</span></b>request.getParameter(<span style='color:#bf0303;'>&quot;aid&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span>&gt;取消关注&lt;/a&gt;
+						<b><span style='color:#000000;'>&lt;%</span></b>
+							} <b>else</b> {
+						<b><span style='color:#000000;'>%&gt;</span></b>
+						&lt;a
+<span style='color:#006e28;'>							href</span>=<span style='color:#0057ae;'>&quot;pj/user.jsp?act=addfriend&amp;a2id=</span><b><span style='color:#000000;'>&lt;%=</span></b>request.getParameter(<span style='color:#bf0303;'>&quot;aid&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b><span style='color:#0057ae;'>&quot;</span>&gt;加关注&lt;/a&gt;
+						<b><span style='color:#000000;'>&lt;%</span></b>
+							}
+						<b><span style='color:#000000;'>%&gt;</span></b>
+					&lt;/div&gt;
+					<b><span style='color:#000000;'>&lt;%</span></b>
+						}
+					<b><span style='color:#000000;'>%&gt;</span></b>
+					&lt;div<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;text-align: left; padding-left: 10px; line-height: 2em&quot;</span>&gt;
+						&lt;div&gt;
+							ID：<b><span style='color:#000000;'>&lt;%=</span></b>r.getInt(<span style='color:#bf0303;'>&quot;aid&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+						&lt;div&gt;
+							昵称：<b><span style='color:#000000;'>&lt;%=</span></b>r.getString(<span style='color:#bf0303;'>&quot;anick&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+						&lt;div&gt;
+							邮箱：<b><span style='color:#000000;'>&lt;%=</span></b>r.getString(<span style='color:#bf0303;'>&quot;email&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+						&lt;div&gt;
+							生日：<b><span style='color:#000000;'>&lt;%=</span></b>r.getDate(<span style='color:#bf0303;'>&quot;birthday&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+						&lt;div&gt;
+							简介：<b><span style='color:#000000;'>&lt;%=</span></b>r.getString(<span style='color:#bf0303;'>&quot;comment&quot;</span>)<b><span style='color:#000000;'>%&gt;</span></b>&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+<b><span style='color:#000000;'>&lt;%</span></b>
+	<b>if</b> (r != <b>null</b>)
+			r.close();
+		<b>if</b> (myrs != <b>null</b>)
+			myrs.close();
+	} <b>catch</b> (<b><span style='color:#0095ff;'>Exception</span></b> e) {
+		e.printStackTrace();
+		out
+				.print(<span style='color:#bf0303;'>&quot;&lt;html&gt;&lt;body&gt;&lt;div style=\&quot;margin:35px;font-size:28px;background:red\&quot;&gt;无此用户！&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);
+	}
+<b><span style='color:#000000;'>%&gt;</span></b></pre>
+</body>
+</html>

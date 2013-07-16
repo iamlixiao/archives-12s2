@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>topbar.jsp</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b><i><span style='color:#0000ff;'>&lt;%@ page</span></i></b><span style='color:#006e28;'> language</span>=<span style='color:#bf0303;'>&quot;java&quot;</span><span style='color:#006e28;'> import</span>=<span style='color:#bf0303;'>&quot;java.util.*&quot;</span><span style='color:#006e28;'> pageEncoding</span>=<span style='color:#bf0303;'>&quot;GBK&quot;</span><b><i><span style='color:#0000ff;'>%&gt;</span></i></b>
+<b><i><span style='color:#0000ff;'>&lt;jsp:useBean</span></i></b><span style='color:#006e28;'> id</span>=<span style='color:#bf0303;'>&quot;acc&quot;</span><span style='color:#006e28;'> class</span>=<span style='color:#bf0303;'>&quot;pj.Account&quot;</span><span style='color:#006e28;'> scope</span>=<span style='color:#bf0303;'>&quot;session&quot;</span><b><i><span style='color:#0000ff;'>&gt;&lt;/jsp:useBean&gt;</span></i></b>
+&lt;div<span style='color:#006e28;'> class</span>=<span style='color:#0057ae;'>&quot;top&quot;</span>&gt;
+	&lt;b<span style='color:#006e28;'> id</span>=<span style='color:#0057ae;'>&quot;title&quot;</span>&gt;<b><span style='color:#000000;'>&lt;%=</span></b>request.getSession().getAttribute(<span style='color:#bf0303;'>&quot;logged&quot;</span>)==<b>null</b>?<span style='color:#bf0303;'>&quot;JavaEE&quot;</span>:acc.getS2((<b><span style='color:#0095ff;'>Integer</span></b>)request.getSession().getAttribute(<span style='color:#bf0303;'>&quot;logged&quot;</span>)) <b><span style='color:#000000;'>%&gt;</span></b>&lt;/b&gt;
+	&lt;a<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;pj/user.jsp?act=front&quot;</span>&gt;首页&lt;/a&gt;
+	&lt;a<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;pj/user.jsp?act=friend&quot;</span>&gt;好友&lt;/a&gt;
+	&lt;a<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;pj/user.jsp?act=settings&quot;</span>&gt; 账户 &lt;/a&gt;
+	&lt;a<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;pj/user.jsp?act=my&quot;</span>&gt;我的主页&lt;/a&gt;
+	<b><span style='color:#000000;'>&lt;%</span></b>
+	<b>if</b> (acc
+			.isAdmin(request.getSession().getAttribute(<span style='color:#bf0303;'>&quot;logged&quot;</span>) == <b>null</b> ? -<span style='color:#b08000;'>1</span>
+					: (<b><span style='color:#0095ff;'>Integer</span></b>) request.getSession().getAttribute(
+							<span style='color:#bf0303;'>&quot;logged&quot;</span>))) { <b><span style='color:#000000;'>%&gt;</span></b>
+	&lt;a<span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;pj/admin.jsp&quot;</span>&gt;管理&lt;/a&gt;
+	<b><span style='color:#000000;'>&lt;%</span></b>} <b><span style='color:#000000;'>%&gt;</span></b>
+	&lt;a<span style='color:#006e28;'> style</span>=<span style='color:#0057ae;'>&quot;position:absolute;right:10px;top:10px;font-size:28px&quot;</span><span style='color:#006e28;'> href</span>=<span style='color:#0057ae;'>&quot;pj/user.jsp?act=logout&quot;</span>&gt;登出&lt;/a&gt;
+&lt;/div&gt;</pre>
+</body>
+</html>
